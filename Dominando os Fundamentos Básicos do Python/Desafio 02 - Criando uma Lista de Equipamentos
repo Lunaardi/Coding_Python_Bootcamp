@@ -1,0 +1,23 @@
+# Crie uma Lista 'itens' para armazenar os equipamentos:
+lista_ferramentas = []
+
+# Criar uma variável com o valor inicial de 0
+iter = 0
+
+# Crie um loop para solicita os itens ao usuário:
+while iter <= 2:
+    
+# Solicite o item e armazena na variável "item":
+    item = input()
+
+# Adicione o item à lista "itens":
+    lista_ferramentas.append(item)
+
+# Incrementa +1 etapa no while
+    iter = iter + 1
+
+# Exibe a lista de itens
+print("Lista de Equipamentos:")  
+for item in lista_ferramentas:
+    # Loop que percorre cada item na lista "itens"
+    print(f"- {item}")
