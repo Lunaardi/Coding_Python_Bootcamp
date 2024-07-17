@@ -1,0 +1,38 @@
+Aula 17.0
+
+	Polimorfismo em Python
+	
+		- A palavra polimorfismo significa que algo possui muitas formas.
+		- Na programação. polimorfismo significa o mesmo nome de função (porém com assinaturas diferentes) sendo utilizado para tipos diferentes.
+		
+		Exemplo: a função len ela pode tanto identificar quantos caracteres possui uma string, tanto quanto pode identificar quantos objetos há dentro de uma lista.
+		
+			len("python")
+			len([10, 20, 30])
+	
+	Polimorfismo com Herança	
+	
+		- Mesmo método anterior porém com comportamento diferente.
+		- Na herança, a classe filha herda os métodos da classe pai.
+		- No entanto, é possivel modificar um método em uma classe filha herdada da classe pai.
+		- Isso pe particularmente útil nos casos em que o método herdado da classe pai não se encaixa perfeitamente na classe filha.
+		
+			Exemplo:
+			
+				class Passaro:
+					def voar(self):
+					pass
+					
+				class Pardal(Passaro):
+					def voar(self):
+						print("Pardal esta voando!")
+						
+				class Avestruz(Passaro):
+					def voar(self):
+						print("Avestruz não voa!")
+						
+				def plano_de_voo(passaro):
+					passaro.voar()
+					
+				plano_de_voo(Pardal())
+				plano_de_voo(Avestruz())
