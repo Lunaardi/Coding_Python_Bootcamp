@@ -1,0 +1,51 @@
+Aula 15.0
+
+	Conceito de Herança com Python
+	
+		Herança em POO
+			
+			- Em programação herança é a capacidade de uma classe filha derivar ou herdar as características e comportamentos da classe pai (base.
+			
+			Benefícios da Herança
+			
+				- Representa bem os relacionamentos do mundo real.
+				- Fornece reutilização de código, não precisamos escrever o mesmo código repetidamente.
+				- Além disso, permite adicionar mais recursos a uma classe sem modificá-la.
+				- É de natureza transitiva, o que significa que, se a classe B herdar da classe A, todas as subclasses de B herdarão automaticamente da classe A.
+				
+				Exemplo: Sintaxe da Herança
+				
+					class A:
+						pass
+						
+					class B(A):
+						pass 
+		
+		Conceituando Herança Simples e Herança Múltipla	
+		
+			Herança Simples:
+			
+				- Quando uma classe filha herda apenas uma classe pai, ela é chamada de herança simples.
+				
+					Exemplo: Herança da Simples
+				
+						class A:
+							pass
+							
+						class B(A):
+							pass 
+				
+			Herança Múltipla:
+			
+				- Quando uma classe filha herda de várias classes pai, ela é denominada de herança múltipla.
+				
+					Exemplo: Herança da Múltipla
+				
+						class A:
+							pass
+							
+						class B:
+							pass 
+							
+						class C(A, B):
+							pass 
