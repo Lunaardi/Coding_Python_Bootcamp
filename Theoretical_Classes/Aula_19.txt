@@ -1,0 +1,18 @@
+Aula 19.0 
+
+	Desafio 4
+	
+		Objetivo Geral 
+		
+			- Iniciar a modelagem do sistema banário em POO.
+			- Adicionar classes para cliente e as operações banárias: depósito e saque.
+			
+		Proposta
+		
+			- Atualizar a implementação do sistema banário, para armazenar os dados de clientes e contas bancárias em objetos ao invés de dicionários.
+			- O código deve serguir o modelo de classes UML a seguir.
+			
+		Desafio extrair
+
+			- Após concluir a modelagem das classes e a criação dos métodos.
+			- Atualizar os métodos que tratam as opções do menu para funcionarem com as classes modeladas
