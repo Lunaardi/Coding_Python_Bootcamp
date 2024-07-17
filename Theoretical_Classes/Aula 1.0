@@ -1,0 +1,29 @@
+Aula 1.0
+
+	Origem
+		Python surgiu em 1989 por Guido Van Rossum, desenvolvida no Centro de Pesquisa Holandês (CWI)
+		
+		Objetivos de Van Rossum para linguagem Python era:
+			- Uma linguagem fácil e intuitica.
+			- Código aberto, para que todos possamk contribuir.
+			- Código tão inteligivel quanto inglês.
+			- Adequada para tarefas diárias, e produtiva!
+			
+	Python
+
+		Pontos fortes: 
+			- Linguagem versátil.
+			- Tipagem dinâmica e forte.
+			- Comunidade gigante e ativa.
+			- Curva de aprendizado baixa.
+		
+		A Receita 
+			Programar consiste em informar ao computador uma sequ~encia de rotinas que devem ser processadas.
+				- Imagine uma receita de bolo, precisamos saber os ingredientes e modo de preparo. 
+				- Seguindo corretamente as instruções ao fim do processo teremos um bolo.
+		
+		Criando um arquivo
+			Para criar a nossa receita de bolo em Python, precisamos criar um arquivo com extensão py.
+				- Com o arquivo criado podemos inserir nossos ingredientes e modo de preparo.
+				
+		Git - Coding_Python_Bootcamp
