@@ -1,0 +1,241 @@
+Aula 20.0 
+
+	Decoradores, Iteradores e Geradores com Python
+	
+		Decoradores em Python
+		
+			Recapitulando 	- Funções em Python são objetos de primeira classe.
+							- Isso significa que as funções podem ser passadas e usadas como argumentos.
+			
+				Exemplo:
+					
+					def dizer_oi(nome):
+						return f"Oi {nome}"
+						
+					def incentivar_aprender(nome)
+						return f"Oi {nome}, vamos aprender Python juntos!"
+						
+					def mensagem_para_guilherme(funcao_mensagem):
+						return funcao_mensagem("Guilherme")
+						
+					print(mensagem_para_guilherme(dizer_oi))
+					print(mensagem_para_guilherme(incentivar_aprender))
+		
+			Inner Functions
+			
+				- É possivel definir funções dentro de outras funções.
+				- Tais funções são chamadas de funções internas.
+				
+					Exemplo?
+					
+						def pai():
+							print("Escrevendo da pai() função")
+							
+							def filho1():
+								print("Escrevendo da filho1() função")
+							
+							def filho2():
+								print("Escrevendo da filho2() função")
+								
+							filho2()
+							filho1()
+							
+						pai()
+	
+			Retornando Funções de Funções
+			
+				- Python também permite que você use funções como valores de retorno.
+				
+					Exemplo:
+					
+						def calcular(operaco):
+						
+							def somar(a, b):
+								return a + b
+				
+							def subtrair(a, b):
+								return a - b
+								
+							if operacao == "+":
+								return somar
+							else:
+								return subtrair
+								
+						resultado = calcular("+")(', 3)
+						print(resultado)
+						
+			Decorador Simples
+			
+				- Agora que entendemos que funções são como qualquer outro objeto em Python, podemos seguir em frente e ver a mágica que é o decorador Python.
+				
+					Exemplo:
+					
+						def meu_decorador(funcao):
+						
+							def envelope():
+								print("Faz algo antes de executar a função.")
+								funcao()
+								print("Faz algo depois de executar a função.")
+								
+							return envelope
+							
+						def ola_mundo():
+							print("Olá mundo!")
+							
+						ola_mundo = meu_decorador(ola_mundo)
+						ola_mundo()
+						
+			Açúcar Sintático!
+				
+				O Python permite que você use decoradores de maneira mais simples com o símbolo @.
+				
+					Exemplo:
+					
+						def meu_decorador(funcao):					
+							def envelope():
+								print("Faz algo antes de executar a função.")
+								funcao()
+								print("Faz algo depois de executar a função.")
+								
+							return envelope
+
+						# Para decorar uma funcao em Python com açucar sintatico, deixa mais facil de usar comparando com Primary_Decorators.py
+						@meu_decorador					
+						def ola_mundo():
+							print("Olá mundo!")
+
+
+						ola_mundo()
+		
+			Retornando Valores de Funções Decoradas
+			
+				- O decorador pode decidir se retorna o valor da função decorada ou não.
+				- Para que o valor seja retornado a função de envelope deve retornar o valor da função decorada.
+				
+					Exemplo:
+					
+						def duplicar(func)?
+							def envelope(*args, **kwargs):
+								func(*args, **kwargs)
+								return func(*args, **kwargs)
+								
+							return envelope
+							
+						@duplicar
+						def aprender(tecnologia):
+							print(f"estou aprendendo {tecnologia}")
+							return tecnologia.upper()
+							
+						tecnologia = aprender("Python")
+						print(tecnologia)
+			
+			Introspecção
+			
+				- É a capacidade de um objeto saber sobre seus próprios atributos em tempo de execução.
+				
+					Exemplo:
+					
+						import functools
+
+						def meu_decorador(funcao):
+								@functools.wraps(funcao) #neste decorador passar a função que recebemos por argumento, ou seja ela trás o nome correto da função
+								def envelope(*args, **kwargs):
+									funcao(*args, **kwargs)
+									
+								return envelope
+							
+						@meu_decorador
+						def ola_mundo(nome, argumento_kwars):
+							print(f"Olá mundo ({nome}!")
+
+						print(ola_mundo.__name__)
+				
+		Iteradores
+		
+			- Em Python, um iterador é um objetoi que contém uma quantidade contável de valores que podem ser iterados, o que possibilita percorrer todos os valores.
+			- O Propocolo do iterador é uma maneira do Python fazer a interação de um objeto, que consiste em dois métodos especiais "__iter__()" e "__next__()"
+			
+			Vantagens
+			
+				- Economizar memória evitando carregar todas as linhas do arquivo.
+				- Iterar linha a linha do arquivo.
+				
+					Exemplo:
+					
+						class FileIterator:
+							def __init__(self, filename):
+								self.file = open(filename)
+								
+							def __iter__(self):
+								return self
+								
+							def __next__(self):
+								line = self.file.readline()
+								if line != '':
+									return line
+								else:
+									self.file.close()
+									raise StopIteration
+									
+						# Uso do FileIterator
+						for line in FileIterator("large_file.txt"):
+							print(line)
+		
+		Geradores
+		
+			- São tipos especiais de iteradores, ao contrário das listas ou outros iteráveis, não armazenam todos os seus valores na memória.
+			- São definidos usando funções regulares, mas, ao invés de retornar valores usando "return", utilizam "yeld".
+			
+			Caracteristicas
+			
+				- Uma vez que item gerado é consumido, ele é esquecido e não pode ser acessado novamente.
+				- o estado interno de um gerador é mantido entre chamadas.
+				- A execução de um gerador é pausada na declaração "yield" e retomada daí na proxima vez que ele for chamado.
+			
+			Recuperando Dados de uma API
+			
+				- Solicitar dados por páginas(paginação).
+				- Fornecer um produtor por vez entre as chamadas.
+				- Quando todos os produtos de uma página forem retornados, verificar se existem novas páginas.
+				- Tratar o consumo da API como uma lista Python.
+				
+				Exemplo
+				
+					import requests
+					
+					def fetch_products(api_url, max_pages=100): # cria uma função que recebe a URL da API e quantas paginas ira consumir
+						page = 1								# aqui eu inicio pela pagina 1
+						while page <= max_pages:				# no while fazemos a iteração 1 a 1, até que a repetição atenda a regra, onde a pagina atual seja menor ou igal que max pages
+							response = requests.get(f"{api_url}?page={page}")
+							data = response.json()				# aqui processamos o dado e colocamos na variavel data
+							for product in data['products']:	# nesta linha processamos o produto para retornar o item 1 a 1 precorrendo por item
+								yeld product					# retorna 1 produto por vez, adicionando na linha do print e retorna no codigo na linha abaixo
+							if 'next_page' not in data:			# caso haja proxima pagina ele retorna, caso não ele para o while
+								break
+							page += 1							# adiciona mais 1 pagina na variavel inicial
+							
+					# Uso do gerador
+					for product in fech_products("http://example.com/products"):
+						print(product['name'])
+						
+		Desafio
+		
+			Implementar as seguintes funcionalidades no sistema
+			
+				- Estabelecer um limite de 10 transações diárias para uma conta
+				- Se o usuário tentar fazer uma transação após atingir o limite, deve ser informado que ele excedeu o numero de transações permitidas para aquele dia.
+				- Mostre no extrato, a data e hora de todas as transações.
+				
+			Decorador de Log
+			
+				- Implemente um decorador de log que seja aplicado a todas as funções de transações (depósito, saque, criação de conta, etc).
+				- Esse decorador deve registrar (printar) a data e hora de cada transação, bem como o tipo de transação.
+				
+			Gerador de Relatórios
+			
+				- Crie um gerador que permita iterar sobre as transações de uma conta e retorne, uma a uma, as transações que foram realizadas.
+				- Esse gerador deve também ter uma forma de filtrar as transações baseado em seu tipo (por exemplo, apenas saques ou apenas depósitos)
+				
+			Iterador Personalizado
+			
+				Implemente um iterador personalizado Contalterador que permita iterar sobre todas as contas do banco, retornando informações básicas de cada conta( número, saldo atual, etc).
