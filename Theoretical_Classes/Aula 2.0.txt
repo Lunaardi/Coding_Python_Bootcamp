@@ -1,0 +1,188 @@
+Aula 2.0
+
+	Tipos de Dados
+	
+		O que são tipos?
+			- Os tipos servem para definir as caracteristicas e comportamentos de um valor (objeto) para o interpretador.
+			- Com esse tipo eu sou capaz de realizar operações matemáticas.
+			- Esse tipo para ser armazenado em memória irá consumir 24 ou x  bytes
+			
+		Os tipos built-in mais comuns:
+			
+			Texto: str
+			Númerico: int, float, complex
+			Sequência: list, tuple, range
+			Mapa: dict
+			Coleção: ste, fronzenset
+			Booleano: bool
+			Binário: bytes, bytearray, memoryview
+			
+		
+	Modo Interativo
+			
+		Existem 2 formas de iniciar o modo interativo, chamando apenas o interpretador (python) ou executando o script com a flag -i (python -i app.py)
+			
+			Funções dir e funções help
+		
+				dir
+					- Sem argumentos, retorna a lista de nomes no escopo local atual. Com um argumento, retorna uma lista de atributos válidos para o objeto. 
+						Exemplo: 
+							dir()
+							dir(100)
+			
+				help
+					- Invoca o sistema de ajuda integrado, É possivel fazer buscas em modo interativo ou informar por parâmetro qual o nome do módulo, função, classe, método ou variável.
+						Exemplo:
+							help()
+							help(100)
+							
+	Variaveis e Constantes
+		
+		Em linguagens de programação podemos definir valores que podem ser alterados no decorrer da execução de um programa.
+			- Esses valores recebem o nome de variáveis, pois eles nascem com um valor e não necessariamente devem permanecer com o mesmo valor durante a execução do programa.
+			
+				Exemplo 1:
+					age = 23
+					name = 'Guilherme'
+					print(f'Meu nome é {name} e eu tenho {age} ano(s) de idade.')
+				
+				Exemplo 2:
+					age, name = (23, 'Guilherme')
+					print(f'Meu nome é {name} e eu tenho {age} ano(s) de idade.')
+				
+		Python não POSSUI constantes
+		
+			- Não existe uma palavra reservada para informar ao interpretador que o valor é constante.
+			- Em algumas linguagens por exemplo: Java e C utiliza-se final e const, respectivamente para definir uma constante.
+			- Em Python usamos a convenção que diz ao programador que a variável com nome todo em letras maíusculas:
+			
+				Exemplo 1:
+					ABS_PATH = '/home/lunardi/Documents/Bootcamp_Python/'
+					DEBUG = True
+					STATES = [
+						'SP',
+						'RJ',
+						'MG',
+					]
+					
+				Exemplo 1:	
+					Amount = 30.2
+		
+		Boas Práticas
+		
+			O padrão de nomes devem ser snake case.
+				- Modo de subustituir os valores em branco ou espaços em '_' (anderline).
+					Ex: 'balance vendas sp' por 'balance_vendas_sp'.
+			Escolher nomes sugestivos.
+			Nome de constantes todo em maiúsculo.
+			
+	Conversão de Tipos
+		
+		Em alguns momentos será necessário converter o topo de uma variável para manipular de forma diferente. 
+			Por exemplo: Variáveis do tipo string, que armazenam números e precisamos fazer alguma operaç~~ao matemática com esse valor.
+			
+			- Inteiro para Float
+				
+				preco = 10		preco = float(preco)	preco = 10 / 2
+				print(preco)	print(preco)			print(preco)
+				>>> 10			>>> 10.0 				>>> 5.0 
+				
+			- Float para Inteiro
+				
+				preco = 10.30	preco = int(preco)
+				print(preco)	print(preco)
+				>>> 10.30		>>> 10
+				
+			- Conversão por Divisão
+				
+				preco = 10		print(preco / 2)	print(preco // 2)
+				print(preco)	>>> 5.0				>>> 5
+				>>> 10
+				
+			- Conversão Numérico para String
+				
+				preco = 10.50
+				idade = 28 
+				
+				print(str(preco))
+				>>> 10.50
+				
+				print(str(idade))
+				>>> 28
+				
+				texto = f"idade {idade} preço {preco}"
+				print(texto)
+				>>> idade 28 preço 10.5
+				
+			- Conversão String para Número
+				
+				preco = "10.50"
+				idade = 28
+				
+				print(float(preco))
+				>>> 10.50
+				
+				Print(int(idade))
+				>>> 28
+				
+			- Modelo de ERRO na conversão
+
+				preco = "python"
+				print(float(preco))
+				>>>
+				Traceback (most recent call last):
+					File "conversion.py", line 3, in <module>
+						print(float(preco))
+				ValueError: could not convert string to float: 'python'
+				
+			- Outros exemplos basicos:
+				
+				- float para int
+					print(int(1.973))
+				
+				- string para int
+					print(int("10"))
+				
+				- string para float
+					print(float("10.10"))
+					
+				- int para float
+					print(float(100))
+				
+				- Definindo a constante(valor) e verificando o tipo
+					valor = 10
+					valor_str = str(valor)
+					print(type(valor))
+					print(type(valor_str))
+	
+	Funções de Entrada e Saida
+	
+		Lendo Valores com a Função Imput
+			
+			Função input
+				- A função builtin input é utilizada quando queremos ler os dados da entrada padrão (teclado).
+				- Ela recebe um argumento do tipo string, que é exibido para o usuário na saída padrão (tela).
+				- A função lê a entrada, converte para string e retorna o valor.
+				
+				Exemplo: -- Neste caso quando informado o nome ele é inserido dentro da variavel nome. Ex: nome = Lunardi
+					nome = input("Informe o seu nome: ")
+					>>> Informe o seu nome:
+			
+		Exibindo valores com a função Print
+			
+			Função print
+				- A função builtin print é utilizada quando precisamos exibir dados na saída padrão (tela).
+				- Ela recebe uma rgumento obriogátório do tipo varargs de objetos e 4 argumentos opcionais (sep, end, flie e flush).
+				- Todos os objetos são convertidos para string, separados por sep e terminados por convertidos por end.
+				- A string final é exibida para o usuário.
+				
+				Exemplo:
+					nome = "Paulo"
+					sobrenome = "Lunardi"
+					
+					print(nome, sobrenome)
+						>>> Paulo Lunardi
+					print(nome, sobrenome, end="...\n")
+						>>> Paulo Lunardi...
+					print(nome, sobrenome, sep="#")
+						>>> Paulo#Lunardi
