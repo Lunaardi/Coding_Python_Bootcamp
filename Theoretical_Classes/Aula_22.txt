@@ -1,0 +1,155 @@
+Aula 22.0
+
+	Introdução a manipulação de arquivos
+	
+		Por que precisamos manipular arquivos?
+		
+			- Os arquivos são essenciais para qualquer tipo de programação, pois fornecem um meio de armazenar e recuperar dados.
+			- Através da manipulação de arquivos, podemos persistir os dados além da vida útil de um programa específico.
+			- Para manipular arquivos em Python, primeiro precisamos abri-los e usamos a função 'open()' para isso.
+			- Quando terminamos de trabalhar com o arquivo, usamos a função 'close()' para liberar recursos.
+			
+			
+		
+			Conceito de arquivo em informática
+			
+				- Um arquivo é um container no computador onde as informações são armazenadas em formato digital.
+				- Existem dois tipos de arquivos que podemos manipular em Python: arquivos de texto e arquivos binários.
+				
+					Exemplo:
+					
+						file = open("example.txt", "r") # onde o primeiro é o caminho do arquivo(nome) e o segundo é o modulo do arquivo.
+						#.... fazemos algo com o arquivo ...
+						file.close()
+						
+			Modos de abertura de arquivo
+			
+				- Existem diferentes modos para abrir um arquivo, como somente leitura ('r'), gravação ('w') e anexar ('a').
+				- O modo de abertura deve ser escolhido de acordo com a operação que iremos realizar no mesmo.
+				
+					Exemplo:
+					
+						# Para ler um aquivo
+						file = open("example.txt", "r")
+						
+						# Para escrever em um aquivo
+						file = open("example.txt", "w")
+						
+						# Para anexar conteúdo a um em um aquivo existente
+						file = open("example.txt", "a")
+					
+			Lendo um Arquivo
+			
+				- O Python fornece várias maneiras de ler um arquivo.
+				- Podemos usar 'read()', 'readline()', ou 'readlines()' dependendo de nossas necessidades.
+				
+					Exemplo: Método read
+					
+						# Ler todo o conteúdo do arquivo de uma vez
+						file = open('example.txt', 'r')
+						print(file.read())
+						file.close()
+				
+				Método Readline e Readlines
+				
+					- O método 'readline()' lê uma linha por vez enquanto o 'readlines()' retorna uma lista onde cada elemento é uma linha do arquivo.
+					
+						Exemplo: Método read
+					
+							# Ler todo o conteúdo do arquivo de uma vez
+							file = open('example.txt', 'r')
+							print(file.readline())
+							file.close()
+							
+			Escrevendo em um arquivo
+			
+				- Podemos usar 'write()' ou 'writelines()' para escrever em um arquivo. 
+				- Lembre-se, no entanto, de abrir o arquivo no modo correto.
+				
+					Exemplo:
+					
+						file = open('example.txt', 'w')
+						file.write("Hello World, Buy Bitcoin!")
+						file.close()
+						
+			Gerenciando arquivos e diretórios
+			
+				- Podemos criar, renomear e excluir arquivos e diretórios usando os módulos 'os' e 'shutil'.
+				
+					Exemplo:
+					
+						import os
+						import shutil
+						
+						# Criar um diretótio
+						os.mkdir("exemplo")
+						
+						# Renomear um arquivo
+						os.rename("old.txt", "new.txt")
+						
+						# Remover um arquivo
+						os.remove("unwanted.txt")
+						
+						# Mover um arquivo
+						shutil.move("source.txt", "destination.txt")
+						
+			Tratamento de exceções em manipulação de arquivos
+			
+				FileNotFoundError: 
+				
+					- Lançada quando o arquivo que está sendo aberto não pode ser encontrado no diretório especificado.
+					
+				PermissionError:
+				
+					- Gerado quando ocorre uma tentativa de abrir um arquivo sem as permissões adequadas para leitura ou gravação.
+					
+				IOError:
+				
+					- Gerado quando ocorre um erro geral de E/S(entrada/saída) ao trabalhar com o arquivo, como problemas de permissão, falta de espaço em disco, entre outros.
+					
+				UnicodeDecodeError:
+				
+					- Surge quando ocorre um erro ao tentar decodificar os dados de um arquivo de texto usando uma codificação inadequada.
+					
+				UnicodeEncodeError:
+
+					- Surge quando ocorre um erro ao tentar codificar dados em unma determinada codificação ao gravar em um arquivo de texto.
+					
+				IsADirectoryError:
+				
+					Surge quando é feita uma tentativa de abrir um diretório em vez de um arquivo de texto.
+						
+		Manipulação de arquivos
+		
+			Bloco with
+		
+				- Use o gerenciamento de contexto (context manager) com a declaração 'with'.
+				- O gerenciamento de contexto permite trabalhar com arquivos de forma segura, garantindo que elesl sejam fechados corretamente, mesmo em caso de exceções.
+				
+					Exemplo:
+					
+						with open('arquivo.txt', 'r') as arquivo:
+							# Faça operações de leitura/gravação no arquivo.
+			
+			Codificação Acertiva
+			
+				- Certifique-se de usar a codificação correta ao ler ou gravar arquivos de texto.
+				- O argumento 'encoding' da função 'open()' permite especificar a codificação.
+				
+					Exemplo:
+					
+						with open('arquivo.txt', 'r', encoding='utf-8') as arquivo:
+							# operações de leitura com codificação UTF-8
+							
+						with open('arquivo.txt', 'w', encoding='utf-8') as arquivo:
+							# operações de escrita com codificação UTF-8
+		
+		Trabalhando com CSV
+		
+			- Python fornece um módulo chamado 'csv' para lidar facilmente com arquivos CSV
+		
+			Práticas Recomendadas
+			
+				- Usar csv.reader e csv.writer para manipular arquivos CSV.
+				- Fazer o tratamento correto das exceções.
+				- Ao Gravar arquivos CSV definir o argumento "newline=" no método 'open'
