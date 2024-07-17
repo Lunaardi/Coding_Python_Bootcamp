@@ -1,0 +1,261 @@
+Aula 10.0
+
+	Aprendendo a Utilizar Dicionários em Python
+	
+		Criação e Acesso aos Dados 
+	
+			Criando Dicionários
+			
+				- Um dicionário é um conjunto não-ordenado de pares chave:valor, onde as chaves são únicas em uma dada instância do dicionário.
+				- Dicionários são delimitados por chaves: {}, e contém uma lista de pares chave:valor separada por vírgulas.
+				
+					Exemplo:
+					
+						pessoa = {"nome": "Guilherme", "idade": 28}
+						
+						pessoa = dict(nome="Guilherme", idade=28) # usando o construtor de dict
+						
+						pessoa["telefone"] = "3333-1234" 
+						# >>> {"nome": "Guilherme", "idade": 28, "telefone": "3333-1234"}
+						
+			Acessando os dados através do Dicionário:
+
+					Exemplo:
+						
+						dados = {"nome": "Guilherme", "idade": 28, "telefone": "3333-1234"}
+						
+						print(dados["nome"])		# >>> "Guilherme"
+						print(dados["idade"])		# >>> 28
+						print(dados["telefone"])	# >>> "3333-1234"
+						
+						# - Neste caso abaixo ela sobreescreve os dados, adicionando os dados que serão inseridos abaixo.
+						
+						dados["nome"]) = "Maria"		
+						dados["idade"])	= 18	
+						dados["telefone"]) = "9988-1781"	
+						
+						dados # {"nome": "Maria", "idade": 18, "telefone": "9988-1781"}
+						
+			Dicionários Aninhados
+			
+				- Dicionários podem armazenar qualquer tipo de objeto Python como valor, desde que a chave para esse valor seja um objeto imutável como strings e números.
+				
+					Exemplo:
+						
+						contatos = {
+							"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"},
+							"giovanna@gmail.com": {"nome": "Giovanna", "telefone": "3443-2121"},
+							"lunaardi@gmail.com": {"nome": "Lunaardi", "telefone": "5846-7895"},
+							"julia@gmail.com": {"nome": "Julia", "telefone": "3698-7766"},
+						}
+						
+						print(contatos["giovanna@gmail.com"]["telefone"]) #"3443-2121"
+			
+			Iterar Dicionários
+			
+				- A forma mais commum para percorrrer os dados de um dicionário é utilizando o comando "for".
+				
+					Exemplo 1:
+					
+						Contatos = {
+							"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"},
+							"giovanna@gmail.com": {"nome": "Giovanna", "telefone": "3443-2121"},
+							"lunaardi@gmail.com": {"nome": "Lunaardi", "telefone": "5846-7895"},
+							"julia@gmail.com": {"nome": "Julia", "telefone": "3698-7766"},
+						}
+					
+						for chave in contatos:
+							print(chave, contatos[chave])
+							
+					Exemplo utilizando items 
+					
+						for chave, valor in contatos.items():
+							print(chave, valor)
+							
+						#"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"}
+						#"giovanna@gmail.com": {"nome": "Giovanna", "telefone": "3443-2121"}
+						#"lunaardi@gmail.com": {"nome": "Lunaardi", "telefone": "5846-7895"}
+						#"julia@gmail.com": {"nome": "Julia", "telefone": "3698-7766"}
+						
+		Metodos da Classe "dict"
+		
+			Clear
+				
+				Exemplo: 
+				
+					contatos = {
+							"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"},
+							"giovanna@gmail.com": {"nome": "Giovanna", "telefone": "3443-2121"},
+							"lunaardi@gmail.com": {"nome": "Lunaardi", "telefone": "5846-7895"},
+							"julia@gmail.com": {"nome": "Julia", "telefone": "3698-7766"},
+						}
+					contatos.clear()
+					contatos # {}
+					
+			Copy
+
+				Exemplo:
+				
+					contaos = {
+						"lunaardi@gmail.com": {"nome": "Lunaardi", "telefone": "5846-7895"}
+					}
+					
+					copia = contatos.copy()
+					copia["lunaardi@gmail.com"] = {"nome": "Paulo"}
+
+					print(contatos["lunaardi@gmail.com"])  	# >>> {"nome": "Lunaardi", "telefone": "5846-7895"}
+					print(copia["lunaardi@gmail.com"]) 		# >>> {"nome": "Paulo"}
+					
+			Fromkeys
+			
+				- Essa função cria chaves para o usuário.
+				
+					Exemplo:
+					
+						dict. fromkeys(["nome", "telefone"])
+						# >>> {"nome": "None", "telefone": "None"}
+						
+						dict.fromkeys(["nome", "telefone"], "vazio")
+						# >>> {"nome": "vazio", "telefone": "vazio"}
+						
+			Get
+
+				- O "get" é uma segunda forma de acessar valores dentro de um dicionário.
+				
+					Exemplo:
+					
+						contatos = {
+						"lunaardi@gmail.com": {"nome": "Lunaardi", "telefone": "5846-7895"}
+						}
+						
+						contatos["chave"]
+							#>>> KeyError
+						
+						contatos.get("chave")
+							# >>> None
+							
+						contatos.get("chave", {})
+							# >>> {}
+							
+						contatos.get("lunaardi@gmail.com", {})
+							# >>> {"lunaardi@gmail.com": {"nome": "Lunaardi", "telefone": "5846-7895"}}
+							
+			Items
+			
+				Exemplo: 
+					
+					contatos = {
+						"lunaardi@gmail.com": {"nome": "Lunardi", "telefone": "5846-7895"}
+						}
+					
+					print(contatos.items())
+					# >>> dictitems([('lunaardi@gmail.com', {'nome': 'Lunardi', 'telefone': '5846-7895'})])
+
+			Pop
+			
+				Exemplo: 
+					
+					contatos = {
+						"lunaardi@gmail.com": {"nome": "Lunardi", "telefone": "5846-7895"}
+						}
+					
+					resultado = contatos.pop("lunaardi@gmail.com")
+					print(resultado)
+					# >>> {'nome': 'Lunardi', 'telefone': '5846-7895'}
+					
+					resultado = contatos.pop("lunaardi@gmail.com", {})
+					print(resultado)
+					# >>> {}
+				
+					resultado = contatos.pop("lunaardi@gmail.com", "Não Encontrou")
+					print(resultado)
+					# >>> 'Não Encontrou'
+			
+			Popitem
+			
+				Exemplo: 
+					
+					contatos = {
+						"lunaardi@gmail.com": {"nome": "Lunardi", "telefone": "5846-7895"}
+						}
+					
+					contatos.popitem()
+					# >>> ('lunaardi@gmail.com', {'nome': 'Lunardi', 'telefone': '5846-7895'}
+					
+					contatos.popitem()
+					# >>> KeyError: 'popitem(): Dictionary is empty'
+			
+			Setdefault
+			
+				Exemplo: 
+					
+					contato = {"nome": "Lunardi", "telefone": "5846-7895"}
+					
+					contato.setdefault("nome", "Lunardi")
+					print(contato)
+						# >>> "Lunardi"
+					
+					contato.setdefault("idade", 35)
+					print(contato)
+						# >>> {"nome": "Lunardi", "telefone": "5846-7895", "idade":28}
+					
+			Update
+			
+				Exemplo: 
+					
+					contatos = {
+						"lunaardi@gmail.com": {"nome": "Lunardi", "telefone": "5846-7895"}
+					}
+					
+					contatos.update({"lunaardi@gmail.com": {"nome", " Paulo Lunardi")}}
+					print(contatos)
+						# >>> {"lunaardi@gmail.com": {"nome", "Paulo Lunardi")}
+					
+					contatos.update({"gionanna@gmail.com": {"nome", "Giovanna", "telefone": "3443-2121"}})
+					print(contatos)
+						# >>> {'lunaardi@gmail.com': {'nome', 'Paulo Lunardi'}, ' gionanna@gmail.com': {"nome", "Giovanna", "telefone": "3443-2121"}}
+					
+			Values
+			
+				Exemplo:	
+					
+					contatos = {
+							"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"},
+							"giovanna@gmail.com": {"nome": "Giovanna", "telefone": "3443-2121"},
+							"lunaardi@gmail.com": {"nome": "Lunardi", "telefone": "5846-7895"},
+							"julia@gmail.com": {"nome": "Julia", "telefone": "3698-7766"},
+						}
+					
+					print(contatos.values())
+					
+						# >>> dict_values([{'nome': 'Guilherme', 'telefone': '3333-2221'},{'nome': 'Giovanna', 'telefone': '3443-2121'},{'nome': 'Lunardi', 'telefone': '5846-7895'},{'nome': 'Julia', 'telefone': '3698-7766'}])
+						
+			In
+			
+				Exemplo:
+				
+					contatos = {
+							"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"},
+							"giovanna@gmail.com": {"nome": "Giovanna", "telefone": "3443-2121"},
+							"lunaardi@gmail.com": {"nome": "Lunardi", "telefone": "5846-7895"},
+							"julia@gmail.com": {"nome": "Julia", "telefone": "3698-7766"},
+						}
+					
+					"guilherme@gmail.com" in contatos 				# >>> True
+					"megui@gmail.com" in contatos					# >>> False
+					"idade" in contatos["guilerme@gmail.com"] 		# False
+					"telefone" in contatos["giovanna@gmail.com"] 	# True
+					
+			Del
+			
+				Exemplo:
+				
+					contatos = {
+							"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"},
+							"giovanna@gmail.com": {"nome": "Giovanna", "telefone": "3443-2121"},
+							"lunaardi@gmail.com": {"nome": "Lunardi", "telefone": "5846-7895"},
+							"julia@gmail.com": {"nome": "Julia", "telefone": "3698-7766"},
+						}
+					
+					del contatos["guilherme@gmail.com"][telefone]
+					del contatos["Lunardi@gmail.com"]
