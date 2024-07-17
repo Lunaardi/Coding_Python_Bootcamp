@@ -1,0 +1,98 @@
+Aula 8.0
+
+	Conhecendo Tuplas em Python
+	
+		Tuplas
+		
+			- Tuplas são estruturas de dados muito parecidas com as listas, a principal diferença é que tuplas são imutáveis enquanto listas são mutáveis.
+			- Podemos criar tuplas através de classe tuple, ou colocando valores separados por vírgula de parenteses.
+			
+				Exemplo:
+				
+					frutas = ("laranja", "pera", "uva",)
+					
+					letras = tuple("python")
+					
+					numeros = tuple([1, 2, 3, 4])
+					
+					pais = ("Brasil",)
+			
+			- A tupla é uma sequência, portanto podemos acessar seus dados utilizando índices. contamos o índice de determinada sequência a partir do zero.
+			
+				Exemplo: Acesso direto
+				
+					frutas = ("macã", "laranja", "uva", "pera", "abacate",)
+					frutas[0] # maçã
+					frutas[2] # laranja
+					frutas[4] # abacate
+	
+				Exemplo: Índice negativo
+				
+					frutas = ("macã", "laranja", "uva", "pera", "abacate",)
+					frutas[-1] # abacate
+					frutas[-3] # uva
+					frutas[-5] # maçã
+	
+		Tuplas Aninhadas
+		
+			- Tuplas podem armazenar todos os tipos de objetos Python, portanto podemos ter tuplas que armazenam outras tuplas.
+			- Com isso podemos criar estruturas bidimensionais(tabelas), e acessar informando os índices de linha e coluna.
+			
+				Exemplo:
+				
+					matriz = (
+							(1, "a", 2),
+							("b", 3, 4),
+							(6, 5, "c"),
+						)
+						
+						matriz[0]  		# [1, "a", 2]
+						matriz[0][0]	# 1
+						matriz[0][-1]	# 2
+						matriz[-1][-1]	# "c"
+						
+		Fatiamento
+		
+			- Além de accessar elementos diretamente, podemos extrair um conjunto de valores de uma sequência.
+			- Para isso basta passar o índice inicial e/ou final para acessar o conjunto.
+			- Podemos ainda informar quantas posições o cursor deve "pular" no acesso.
+			
+				Exemplo:
+					
+						lista = ("p","y","t","h","o","n",)
+						
+						lista[2:]		# ("t","h","o","n")
+						lista[:2]		# ("p","y")
+						lista[1:3]		# ("y", "t")
+						lista[0:3:2]	# ("p", "t")
+						lista[::]		# ("p","y","t","h","o","n")
+						lista[::-1]		# ("n","o","h","t","y","p")
+						
+	Metodos da Classe Tuple
+						
+		Count em Tupla
+		
+			Exemplo:
+			
+				cores = ("vermelho", "azul", "verde", "azul",)
+				
+				cores.count("vermelho") # >>> 1
+				cores.count("azul") # >>> 2
+				cores.count("verde") # >>> 1
+			
+		Index em Tupla
+		
+			Exemplo:
+			
+				linguagens = ("python", "js", "c", "java", "csharp",)
+				
+				linguagens.index("java")	# >>> 3
+				linguagens.index("python")  # >>> 0
+				
+		Len em Tupla
+		
+			Exemplo:
+			
+				linguagens = ("python", "js", "c", "java", "csharp",)
+				
+				len(linguagens) # >>> 5
