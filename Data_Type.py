@@ -1,5 +1,0 @@
-print(1 + 2)
-print(1 + 239.3 + 43.25)
-print(True)
-print(False)
-print("Bootcamp Python")
