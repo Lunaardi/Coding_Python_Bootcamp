@@ -1,0 +1,212 @@
+Aula 9.0 
+
+	Conjuntos (Estrutura de dados Set)
+	
+		Criando Sets
+		
+			- Um set é uma coleção que não possui objetos repetidos, usamos sets para representar conjuntos matemáticos ou eliminar itens duplicados de um iterável.
+			
+				Exemplo: Declarando Conjuntos
+				
+					set([1, 2, 3, 1, 3, 4]) # >>> {1, 2, 3, 4}
+					
+					set("abacaxi) 			# >>> {"b", "a", "c", "x", "i"}
+					
+					set(("palio", "gol", "celta", "palio", "golf"))	# >>> {gol", "celta", "palio", "golf"}
+					
+					linguagens = {"python", "java", "sql", "python"}
+					
+		Acessando dados
+					
+			- Conjunto em Python não suportam indexação e nem fatiamento, caso queira acessar os seus valores é necessário converter o conjunto em lista.
+			
+				Exemplo: Acessando dados
+				
+					numeros = {1, 2, 3, 2}
+					
+					numeros = list(numeros)
+					
+					numeros[0]
+			
+		Iterar Conjuntos
+		
+			- A forma mais comum para percorrer os dados de um conjunto é utulizando o comando for.
+			
+				Exemplo:
+			
+					carros = {"golf", "cruise", "sportage", "corcel_II"}
+					
+					for carro in carros:
+						print(carro)
+				
+		Função Enumerate
+		
+			- Às vezes é necessário saber qual o índice do objeto dentro do laço "for".
+			- Para isso podemos usar a função "enumerate".
+			
+				Exemplo: Função Enumerate
+			
+					carros = {"golf", "cruise", "sportage", "corcel_II"}
+					
+					for indice, carro in enumerate(carros):
+						print(f"{indice}: {carro}")
+						
+	Metodos da Classe Set
+	
+		Union
+			
+			Exemplo:
+			
+				conjunto_a = {1, 2}
+				conjunto_a = {3, 4}
+				
+				conjunto_a.union(conjunto_b) # >>> {1, 2, 3, 4}
+		
+		Intersection
+		
+			Exemplo:
+			
+				conjunto_a = {1, 2, 3}
+				conjunto_a = {2, 3, 4}
+				
+				conjunto_a.intersection(conjunto_b) # >>> {2, 3}
+		
+		Difference
+		
+			Exemplo:
+			
+				conjunto_a = {1, 2, 3}
+				conjunto_a = {2, 3, 4}
+				
+				conjunto_a.difference(conjunto_b) # >>> {1}
+				conjunto_b.difference(conjunto_a) # >>> {4}
+				
+		Symmetric Difference
+		
+			- ***
+		
+				Exemplo: 
+					
+					conjunto_a = {1, 2, 3}
+					conjunto_a = {2, 3, 4}
+					
+					conjunto_a.symmetric_difference(conjunto_b) # >>> {1, 4}
+				
+		Issubset
+		
+			- Verifica se um conjunto esta contido dentro de outro conjunto e traz retorno de um booleano, dizendo se é verdadeiro ou falso essa verificação.
+		
+				Exemplo:
+				
+					conjunto_a = {1, 2, 3}
+					conjunto_a = {4, 1, 2, 5, 6, 3}
+					
+					conjunto_a.issubset(conjunto_b) # >>> True
+					conjunto_b.issubset(conjunto_a) # >>> False
+					
+		Isdisjoint
+		
+			- Significa que eu quero verificar se um conjunto de elementos não pertencem a outro conjunto
+			
+				Exemplo:
+				
+					conjunto_a = {1, 2, 3, 4, 5}
+					conjunto_b = {6, 7, 8, 9}
+					conjunto_c = {1, 0}
+					
+					conjunto_a.isdisjoint(conjunto_b) # >>> True
+					conjunto_a.isdisjoint(conjunto_c) # >>> False
+					
+		Add
+		
+			- Serve para adicionar um objeto em um conjunto.
+				
+				Exemplo:
+				
+					sorteio = {1, 23}
+					
+					sorteio.add(25) # {1, 23, 25}
+					sorteio.add(42) # {1, 23, 25, 42}
+					sorteio.add(25) # {1, 23, 25, 42}
+					
+		Clear
+			
+			- Serve para limpar os objetos em um conjunto de dados
+			
+				Exemplo:
+				
+					sorteio = {1, 23}
+					# print(sorteio) # >>> {1, 23}
+					
+					sorteio.clear()
+					# print(sorteio) # >>> {}
+					
+		Copy
+			
+			- Serve para copiar os objetos em um conjunto de dados
+			
+				Exemplo:
+				
+					sorteio = {1, 23}
+					# print(sorteio) # >>> {1, 23}
+					
+					sorteio2 = sorteio.copy()
+					# print(sorteio2) # >>> {1, 23}
+					
+		Discard
+		
+			- Usamos quando queremos discartar um valor ou objeto do conjunto/set.
+			- Quando chamado com um elemento que não existe no conjunto ele não gera erro.
+				
+				Exemplo:
+				
+					numeros = {1, 2, 3, 1, 2, 4, 5, 5, 6, 7, 8, 9, 0}
+					
+					print(numeros) # >>> {1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
+					numeros.discard(1)
+					numeros.discard(45)
+					numeros # {2, 3, 4, 5, 6, 7, 8, 9, 0}
+					
+		Pop
+		
+			- Usamos quando queremos remover os valores ou objeto do conjunto/set começando da esquerda para a direta.
+				
+				Exemplo:
+				
+					numeros = {1, 2, 3, 1, 2, 4, 5, 5, 6, 7, 8, 9, 0}
+					print(numeros) 			# >>> {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+					
+					numeros.pop()
+					print(numeros)			# >>> {1, 2, 3, 4, 5, 6, 7, 8, 9}
+					
+					numeros.pop()
+					print(numeros)			# >>> {2, 3, 4, 5, 6, 7, 8, 9}
+					
+					numeros.pop()
+					print(numeros)			# >>> {3, 4, 5, 6, 7, 8, 9}
+					
+		Remove
+		
+			- Usamos quando queremos remover os valores ou objeto do conjunto/set, devemos passar o objeto a ser removido do conjunto.
+			- Quando chamado com um elemento que não existe no conjunto ele gera erro.
+			
+				Exemplo:
+				
+					numeros = {1, 2, 3, 1, 2, 4, 5, 5, 6, 7, 8, 9, 0}
+					print(numeros) 			# >>> {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+					
+					numeros.remove(0)
+					print(numeros)			# >>> {1, 2, 3, 4, 5, 6, 7, 8, 9}
+					
+					numeros.remove(9)
+					print(numeros)			# >>> {1, 2, 3, 4, 5, 6, 7, 8}
+					
+		Len
+		
+			- Lê quantos objetos distintos há no conbjunto.
+			- Quando há elementos duplicados pega apenas 1 e desconsidera os demais na leitura.
+		
+				Exemplo:
+					
+						numeros = {1, 2, 3, 1, 2, 4, 5, 5, 6, 7, 8, 9, 0}
+						print(len(numeros)) 			# >>> 10
