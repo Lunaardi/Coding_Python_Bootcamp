@@ -1,0 +1,146 @@
+Aula 13.0 
+
+	Dominando os Fundamentos Basicos de Python
+		
+		Desafio 01
+		
+			- Uma empresa de telecomunicações deseja criar uma solução algorítmica que ajude aos seus clientes a escolherem o plano de internet ideal com base em seu consumo mensal de dados. 
+			- Para a resolução, você pode solicitar ao usuário que insira o seu consumo, sendo este um valor 'float'. 
+			- Crie uma função chamada recomendar_plano para receber o consumo médio mensal de dados informado pelo cliente, além de utilizar estruturas condicionais para fazer a verificação e retornar o plano adequado.
+
+			Planos Oferecidos:
+
+				- Plano Essencial Fibra - 50Mbps: Recomendado para um consumo médio de até 10 GB.
+				- Plano Prata Fibra - 100Mbps: Recomendado para um consumo médio acima de 10 GB até 20 GB.
+				- Plano Premium Fibra - 300Mbps: Recomendado para um consumo médio acima de 20 GB.
+				
+				# TODO: Crie uma Função: recomendar_plano para receber o consumo médio mensal: 
+				# TODO: Crie uma Estrutura Condicional para verifica o consumo médio mensal 
+				# TODO: Retorne o plano de internet adequado:
+				# Solicita ao usuário que insira o consumo médio mensal de dados: consumo = float(input())
+				# Chama a função recomendar_plano com o consumo inserido e imprime o plano recomendado: print(recomendar_plano(consumo))
+				
+				Codigo entregue e aprovado:
+				
+					def recomendar_plano(consumo):
+						if consumo < 10:
+							return "Plano Essencial Fibra - 50Mbps"
+						elif 10 <= consumo <= 20:
+							return "Plano Prata Fibra - 100Mbps"
+						else: 20 <= consumo:
+							return "Plano Premium Fibra - 300Mbps"
+						
+							
+					consumo = float(input("Para qual é o consumo mensal?"))
+					recomenda = recomendar_plano(consumo)
+					print("O plano recomendado é:", recomenda)
+			
+		Desafio 02
+		
+			- Você foi designado para desenvolver um programa para gerenciar os equipamentos de uma empresa.
+			- O objetivo é criar um solução que permita aos usuários inserir informações sobre os equipamentos que serão cadastrados na rede, em seguida, exibir essa lista de equipamentos. 	
+			- Crie uma Lista para armazenar esses equipamentos e depois um 	 para solicitar ao usuário inserir até três equipamentos.
+			- O programa solicitará ao usuário que insira uma lista com três equipamentos para adicionar a rede.
+			- Após a entrada dos itens, o programa exibirá a lista de equipamentos inseridos pelo usuário. 
+			- Cada equipamento será listado com um prefixo ( - ) de marcação para melhor organização.
+			
+				Codigo entregue e aprovado:
+				
+					# Crie uma Lista 'itens' para armazenar os equipamentos:
+					lista_ferramentas = []
+
+					# Criar uma variável com o valor inicial de 0
+					iter = 0
+
+					# Crie um loop para solicita os itens ao usuário:
+					while iter <= 2:
+						
+					# Solicite o item e armazena na variável "item":
+						item = input()
+
+					# Adicione o item à lista "itens":
+						lista_ferramentas.append(item)
+
+					# Incrementa +1 etapa no while
+						iter = iter + 1
+
+					# Exibe a lista de itens
+					print("Lista de Equipamentos:")  
+					for item in lista_ferramentas:
+						# Loop que percorre cada item na lista "itens"
+						print(f"- {item}")
+
+		Desafio 03
+			
+			https://docs.python.org/pt-br/3.8/howto/regex.html
+			https://docs.python.org/pt-br/3/library/re.html
+			
+			Expressões Regurales
+			
+				- Expressões regulares (chamadas REs, ou regexes ou padrões regex) são essencialmente uma mini linguagem de programação altamente especializada incluída dentro do Python e disponível através do módulo re. 
+				- Usando esta pequena linguagem, você especifica as regras para o conjunto de strings possíveis que você quer combinar; esse conjunto pode conter sentenças em inglês, endereços de e-mail, ou comandos TeX ou qualquer coisa que você queira.
+				- Você poderá então perguntar coisas como “Essa string se enquadra dentro do padrão?” ou “Existe alguma parte da string que se enquadra nesse padrão?”.
+				- Você também pode usar as REs para modificar uma string ou dividi-la de diversas formas.
+
+				- Os padrões das expressões regulares são compilados em uma série de bytecodes que são então executadas por um mecanismo de combinação escrito em C. 
+				- Para usos avançados, talvez seja necessário prestar atenção em como o mecanismo irá executar uma dada RE, e escrever a RE de forma que os bytecodes executem de forma mais rápida.
+				- Otimização é um tema que não será visto neste documento, porque ele requer que você tenha um bom entendimento dos mecanismos de combinação internos.
+
+				- A linguagem de expressões regulares é relativamente pequena e restrita, então nem todo tipo de processamento de strings pode ser feito através dela.
+				- Existem tarefas que podem ser feitas com expressões regulares, mas as expressões acabam ficando muito complicadas.
+				- Nesses casos, é melhor escrever código Python para fazer o processamento; apesar do código Python ficar mais lento que uma expressão regular elaborada, ele provavelmente será mais facilmente compreensível.
+
+				Padrões Simples
+				
+					- Vamos começar aprendendo o expressão regular mais simples possível.
+					- Dado que expressões regulares são usado para operar com strings, nós começaremos com o tipo mais comum de tarefa: combinando caracteres.
+
+					- Para uma explicação detalhada da ciência por trás das expressões regulares (determinística e não-determinística finita automata), você pode procurar na maioria dos livros sobre escrita de compiladores.
+
+				Combinando Caracteres
+				
+				- A maior parte das letras e caracteres irão simplesmente combinar a si mesmo.
+				- Por exemplo, a expressão regular test irá corresponder à string test exatamente. 
+				- Você pode ativar modo que é insensível a letras maiúsculas que permite essa RE corresponder também a Test ou TEST; mais sobre isso posteriormente.
+
+				- Existem exceções para esta regra; alguns caracteres são metacaracteres especiais, e não combinam com eles mesmos. Ao invés disso, eles sinalizam que alguma coisa fora do comum deve ser combinada ou eles afetam outra porção da RE por se repetirem ou modificando seu significado. 
+				- A maior parte desse documento é dedicado em discutir vários metacaracteres e o que eles fazem.
+
+				- Aqui está a lista completa de metacaracteres; seus significados serão discutidos ao longo deste documento.
+					. ^ $ * + ? { } [ ] \ | ( )
+					
+
+				Codigo entregue e aprovado:
+
+
+					# Módulo 're' que fornece operações com expressões regulares.
+					import re
+
+					 # Crie uma função chamada 'validate_numero_telefone' que aceite um argumento 'phone_number':
+					def validate_numero_telefone(phone_number):
+					   
+						# Defina um padrão de expressão regular (regex) para validar números de telefone no formato (XX) 9XXXX-XXXX:
+						match="(^\([1-9]{2}\) 9[0-9])[0-9]{3}\-[0-9]{4}$"
+					   
+						# A função 're.match()' para verifica se o padrão definido corresponde ao número de telefone fornecido.
+						# O 're.match()' retorna um objeto 'match' se houver correspondência no início da string, caso contrário, retorna 'None'.
+						if re.match(match, phone_number):  
+							
+							# Agora crie um return, para retornar que o número de telefone é válido:
+							return True
+						   
+							# Crie um else e return, caso não o número de telefone seja inválido:
+						else:
+							return False
+						
+					# Solicita ao usuário que insira um número de telefone e armazena o valor fornecido na variável 'phone_number'.
+					phone_number = input()  
+
+					# Chame a função 'validate_numero_telefone()' com o número de telefone fornecido como argumento e armazene o resultado retornado na variável 'result'.
+					result = validate_numero_telefone(phone_number)
+
+					# Imprime o resultado:
+					if result == True:
+						print("Número de telefone válido.")
+					else:
+						print("Número de telefone inválido.")
