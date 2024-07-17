@@ -1,0 +1,185 @@
+Aula 5.0 
+
+	Dominando Strings e Fatiamento
+	
+		Métodos úteis na Classe String
+		
+			Objetivo
+				
+				- Conhecer métodos úteis para manipular objetos do tipo string, como interpolar valores de variáveis e entedner como funciona o fatiamento.
+				
+			Introdução
+			
+				- A classe String do Python é muito conhecida por ser rica em métodos e possuir uma interface muito fácil de trabalhar.
+				- Em algumas linguagens manipular sequências de caracteres não é um trabalho trivial, porém, em Python esse trabalho é muito simples.
+				
+				Exemplo 1: Maiúscula, minúscula e título.
+				
+					curso = "pYtHon"
+					
+					print(curso.upper())
+					>>> Python
+					
+					print(curso.lower())
+					>>> python
+					
+					print(curso.title())
+					>>> Python
+				
+				Exemplo 2: Eliminando espaços em branco.
+				
+					curso = "     Python "
+					
+					print(curso.strip())  # Remover espaçõs dos 2 lados
+					>>> "Python"
+					
+					print(curso.lstrip()) # Remover espaçõs à esquerda
+					>>> "Python "
+					
+					print(curso.title())  # Remover espaçõs à direita
+					>>> "     Python"
+				
+				Exemplo 3: Junções e Centralização.
+				
+					curso = "Python"
+					
+					print(curso.center(10, "#"))  # Contém 2 argumentos, o primeiro diz a quantidade casas, e o segundo(não obrigatório) o objeto(se não houver nenhum caracter será espaço em branco).
+					>>> "##Python##"
+					
+					print(".".join(curso)) # o Join passa item a item e passa o caracter selecionado na instrução do join.
+					>>> "P.y.t.h.o.n"
+					
+				
+		Interpolação de Variávies
+		
+			Introdução
+			
+				- Em Python temos 3 formas de interpolar variáveis em strings:
+					- A primeira é usando o sinal %
+					- A segunda é utilizando o metódo format
+					- A última é utilizando f strings.
+					
+				- A primeira forma não é atualmente recomendada e seu uso em Python 3 é raro, por esse motivo iremos focar nas 2 últimas.
+				
+					Old Style
+					
+						nome = "Paulo"
+						sobrenome = "Lunardi"
+						idade = 28
+						profissao = "Programador"
+						linguagem = "Python"
+						
+						print("Olá me chamo %s. Eu tenho %d anos de idade, trabalho com %s e estou matriculado no curso de %s." % (nome, idade, profissao, linguagem))
+						>>> Olá me chamo Paulo. Eu tenho 35 anos de idade, trabalho com Programador e estou matriculado no curso de Python.
+						
+					Método Format; Casos de variações no format
+					
+						nome = "Paulo"
+						sobrenome = "Lunardi"
+						idade = 28
+						profissao = "Programador"
+						linguagem = "Python"
+						
+						print("Olá me chamo {}{}. Eu tenho {} anos de idade, trabalho com {} e estou matriculado no curso de {}.".format(nome, sobrenome, idade, profissao, linguagem))
+						
+						print("Olá me chamo {4}{5}. Eu tenho {3} anos de idade, trabalho com {2} e estou matriculado no curso de {1}.".format(linguagem, profissao, idade, nome, sobrenome))
+						
+						print("Olá me chamo {nome}{sobrenome}. Eu tenho {idade} anos de idade, trabalho com {profissao} e estou matriculado no curso de {linguagem}.".format(nome=nome, sobrenome=sobrenome, idade=idade, profissao=profissao, linguagem=linguagem))
+						
+						print("Olá me chamo {nome}{sobrenome}. Eu tenho {idade} anos de idade, trabalho com {profissao} e estou matriculado no curso de {linguagem}.".format(**pessoa))
+					
+						>>> Olá me chamo Paulo Lunardi. Eu tenho 35 anos de idade, trabalho com Programador e estou matriculado no curso de Python.
+						
+					f-string
+						
+						nome = "Paulo"
+						sobrenome = "Lunardi"
+						idade = 28
+						profissao = "Programador"
+						linguagem = "Python"
+						
+						print("Olá me chamo {nome}{sobrenome}. Eu tenho {idade} anos de idade, trabalho como {profissao} e estou matriculado no curso de {linguagem}.")
+						>>> Olá me chamo Paulo Lunardi. Eu tenho 35 anos de idade, trabalho com0 Programador e estou matriculado no curso de Python.
+						
+					Formatar strings com f-string
+					
+						PI = 3.14159
+						
+						print(f"Valor de PI: {PI:.2f}") # antes do . é o valor de casa como espaço quando não ha é zero espaços, e o valor depois (2f) é a quantidade de casas decimais.
+						>>> "Valor de PI: 3.14"
+						
+						print(f"Valor de PI: {PI:10.2f}")
+						>>> "Valor de PI:           3.14"
+		
+		
+		Fatiamento de String
+		
+			- Introdução
+				
+				- Fatiamento de strings é uma técnica utilizada para retornar substrings (partes da string original), informando inicio (start), fim (stop) e passo (step): [start: stop[, step]].
+				
+					Exemplo:
+						
+						nome = "Paulo Lima Lunardi"
+						
+						nome[0]
+						>>> "P"
+						
+						nome[:5]
+						>>> "Paulo"
+						
+						nome[6:]
+						>>> "Lima Lunardi"
+						
+						nome[6:10]
+						>>> "Lima"
+						
+						nome[6:10:2]
+						>>> "Lm"
+						
+						nome[:]
+						>>> ""Paulo Lima Lunardi"
+						
+						nome[::-1]
+						>>> "idranuL amiL oluaP"
+						
+		
+		String múltiplas linhas
+		
+			Introdução
+			
+				- Strings dew múltiplas linhas são definidas informando 3 aspas simples ou duplas durante a atribuição.
+				- Elas podem ocupar várias linhas do código, e todos os espaços em branco são incluídos na string final.
+				
+			Strings Triplas
+			
+				Exemplo 1:
+				
+					nome = "Lunardi"
+					
+					mensagem = f"""
+					Olá meu nome é {nome},
+					Eu estou aprendendo Python.
+					"""
+					
+					>>>
+					
+					Olá meu nome é Lunardi,
+					Eu estou aprendendo Python.
+				
+				Exemplo 2:
+				
+					nome = "Lunardi"
+					
+					mensagem = f'''
+					    Olá meu nome é {nome},
+					Eu estou aprendendo Python.
+					       Essa mensagem tem diferentes recuos.
+					'''
+					
+					>>>
+					
+					    Olá meu nome é Lunardi,
+					Eu estou aprendendo Python.
+					       Essa mensagem tem diferentes recuos.
+						   
