@@ -1,0 +1,155 @@
+Aula 11.0
+
+	Funções Python - Parte 01
+	
+		O que são funções?
+		
+			- Função é um bloco de código identificado por um nome e pode receber uma lista de parâmentros, esses parâmetros podem ou não ter valores padrões. 
+			- Usar funções torna o código mais legível e possibilita o reaproveitar o código.
+			- Programar baseado em funções, é o mesmo que dizer que estamos programando de maneira estruturada.
+			
+				Exemplo:
+				
+					def exibir_mensagem():
+						print("Olá mundo!")
+						
+					def exibir_mensagem_2(nome):
+						print(f"Seja bem vindo {nome}!")
+						
+					def exibir_mensagem_3(nome="Anônimo"):
+						print(f"Seja bem vindo {nome}!")
+						
+					# exibir_mensagem()
+					# exibir_mensagem_2(nome="Lunardi")
+					# exibir_mensagem_3()
+					# exibir_mensagem(nome="Chappie")
+		
+		Retornando Valores
+		
+			- Para retornar um valor, utilizamos a palavra reservada return.
+			- Toda funçãoPython retorna None por padrão.
+			- Diferente de outras linguagens de programação, em Python uma função pode retornar mais de um valor.
+			
+				Exemplo:
+					
+					def calcular_total(numeros:
+						return sum(numeros)
+						
+					def retorna_antecessor_e_sucessor(numero):
+						antecessor = numero - 1
+						sucessor = numero + 1
+						
+						return antecessor, sucessor
+						
+					calcular_total([10, 20, 34]) 			# >>> 64
+					retorna_antecessor_e_sucessor(10) 		$ >>> (9, 11)
+					
+		Argumentos Nomeados
+		
+			Funções também podem ser chamadas usando argumentos nomeados da forma cheve=valor
+			
+				Exemplo:
+				
+					def salvar_carro(marca, modelo, ano, placa):
+						#salva carro no banco de dados..
+						print(f"Carro inserido com sucesso! {marcar}/{modelo}/{ano}/{placa}")
+					
+					salvar_carro("Kia", "sportage", 2016, "ADC-1177" )
+					salvar_carro(marca="Chevrolet", modelo="cruise", ano="2014", placa="ADF-3345")
+					salvar_carro(**("marca":"Chevrolet", "modelo": "cruise", "ano": ""2014", "placa": "ADF-3345")
+					
+					# Carro inserido com sucesso! Kia/sportage/2016/ADC-1177
+					
+		Args e Kwargs
+		
+			- Podemos combinar parâmetros obrigatórios com args e kwargs.
+			- Quando esses são definidos (*args e **kwargs), o método recebe os valores como tupla e dicionário respectivamente.
+			
+				Exemplo:
+				
+					def exibir_poema(dataextenso, *args, **kwargs):
+						texto = "\n".join(args)
+						meta_dados = "\n".join([f"chave.title()}: {valor}" for chave, valor in kwargs.items()])
+						mensagem = f"{data_extenso}\n\n{texto}\n\n{meta_dados}"
+						print(mensagem)
+						
+					exibir_poema("Sexta,26 de Agosto de 2022", "Zen of Python", "Beautiful is better than ugly.", autor="Tim Peters", ano=1999)
+					
+		Parametros Especiais
+		
+			- Por parão, argumentos podem ser passados para uma função Python tanto por posição quanto explicitamente pelo nome.
+			- Para uma melhor legibilidade e desempenho, um melhor caminho seria restringir a maneira pelo qual argumentos possam ser passados.
+			- Assim um desenvolvedor precisa apenas olhar para a definição da função para determinar se os itens são passador por posição, por posição e nome, ou por nome.
+				
+				Exemplo teórico.
+				
+					def f(pos1, pos2, /, pos or kwd, *, kwd1, kwd2)?
+						  ----------	 ----------     ----------
+							|				  |				|
+							|      	Positional or keyword   |
+							|								|->> Keyword only
+							|->> Positional only
+				
+			Positional only: Exemplo 
+				
+				def criar_carro(modelo, ano, placa, /, marca, motor, combustivel):
+					print(modelo, ano, marca, motor, combustivel)
+						
+				criar_carro("Kia", 2016, "ADC-1177", marca="Chevrolet", motor="1.6", combustivel="Gasolina") # >>> válido
+				criar_carro(modelo="Kia", ano=2016, placa="ADC-1177", marca="Chevrolet", motor="1.6", combustivel="Gasolina") # >>> inválido
+					
+				
+			Keyword only: Exemplo
+			
+				def criar_carro(*,modelo, ano, placa, marca, motor, combustivel):
+					print(modelo, ano, marca, motor, combustivel)
+						
+				
+				criar_carro(modelo="Kia", ano=2016, placa="ADC-1177", marca="Chevrolet", motor="1.6", combustivel="Gasolina") 	# >>> válido
+				
+				criar_carro("Kia", 2016, "ADC-1177", marca="Chevrolet", motor="1.6", combustivel="Gasolina") 					# >>> inválido
+				
+			Keyword and Positional only: Exemplo
+			
+				def criar_carro(modelo, ano, placa, /, *, marca, motor, combustivel):
+					print(modelo, ano, marca, motor, combustivel)
+						
+				
+				criar_carro("Kia", 2016, "ADC-1177", marca="Chevrolet", motor="1.6", combustivel="Gasolina") 					# >>> válido
+				criar_carro(modelo="Kia", ano=2016, placa="ADC-1177", marca="Chevrolet", motor="1.6", combustivel="Gasolina") 	# >>> inválido
+		
+		Objetos de primeira classe
+		
+			- Em Python tudo é objeto, dessa forma funções também são objetos, o que as tornam objetos de primeira classe.
+			- Com isso podemos atribuir funções a variáveis, passá-las como parâmetro para funções, usá-las como valores em estruturas de dados(listas, tuplas, dicionários, etc) e usar como valor de retorno para uma função(closures).
+			
+				Exemplo:
+				
+					def somar(a, b):
+						return a + baixa
+					
+					def exibir_resultado(a, b, funcao):
+						resultado = funcao(a, b)
+						print(f"Oresultado da operação {a} = {b} - {resultado}")
+						
+					exibir_resultado(10, 10, somar) 
+						# >>> O resultado da operação 10 + 10 = 20
+			
+		Escopo Local e Escopo Global
+	
+			- Python trabalha com escopo local e global, dentro do bloco da função o escopo é local.
+			- Portanto alterações ali feitas em objetos imutáveis serão perdidas quando o método terminar de ser executado.
+			- Para usar objetos globais utilizamos a palavra-chave global, que informa ao interpretador que a variável que está sendo manipulada no escopo local é global.
+			- Essa NÃO é um aboa prática e deve ser evitada.
+			
+				Exemplo de variavel com Escopo Global:
+				
+					salario = 2000
+					
+					def salario_bonus(bonus):
+						global salario
+						salario += bonus
+						return salario
+						
+					salario_bonus(500) 
+						# >>> 2500
