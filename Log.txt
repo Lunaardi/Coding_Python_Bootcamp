@@ -1,0 +1,13 @@
+[2024-07-17 00:06:38] Função 'create_customer' executada com argumermentos ([<PhysicalPerson: (123)>],) e {}. Retornou None
+[2024-07-17 00:06:43] Função 'create_account' executada com argumermentos (1, [<PhysicalPerson: (123)>], [<CurrentAccount: ('0001', '1', 'aa')>]) e {}. Retornou None
+[2024-07-17 00:06:47] Função 'deposit' executada com argumermentos ([<PhysicalPerson: (123)>],) e {}. Retornou None
+[2024-07-17 00:06:57] Função 'deposit' executada com argumermentos ([<PhysicalPerson: (123)>],) e {}. Retornou None
+[2024-07-17 00:11:08] Função 'create_customer' executada com argumermentos ([<PhysicalPerson: (321)>],) e {}. Retornou None
+[2024-07-17 00:11:12] Função 'create_account' executada com argumermentos (1, [<PhysicalPerson: (321)>], [<CurrentAccount: ('0001', '1', 'aa')>]) e {}. Retornou None
+[2024-07-17 00:13:25] Função 'create_customer' executada com argumermentos ([<PhysicalPerson: (321)>, <PhysicalPerson: (145)>],) e {}. Retornou None
+[2024-07-17 00:13:29] Função 'create_account' executada com argumermentos (2, [<PhysicalPerson: (321)>, <PhysicalPerson: (145)>], [<CurrentAccount: ('0001', '1', 'aa')>, <CurrentAccount: ('0001', '2', 'aa')>]) e {}. Retornou None
+[2024-07-17 00:13:40] Função 'deposit' executada com argumermentos ([<PhysicalPerson: (321)>, <PhysicalPerson: (145)>],) e {}. Retornou None
+[2024-07-17 00:14:38] Função 'to_withdraw' executada com argumermentos ([<PhysicalPerson: (321)>, <PhysicalPerson: (145)>],) e {}. Retornou None
+[2024-07-17 00:15:43] Função 'create_customer' executada com argumermentos ([<PhysicalPerson: ('Lunardi', 188)>],) e {}. Retornou None
+[2024-07-17 00:15:59] Função 'create_account' executada com argumermentos (1, [<PhysicalPerson: ('Lunardi', 188)>], [<CurrentAccount: ('0001', '1', 'Lunardi')>]) e {}. Retornou None
+[2024-07-17 00:16:07] Função 'deposit' executada com argumermentos ([<PhysicalPerson: ('Lunardi', 188)>],) e {}. Retornou None
