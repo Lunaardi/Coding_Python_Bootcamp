@@ -1,0 +1,93 @@
+Aula 21.0
+
+	Trabalhando com objetos date, datetime e time
+	
+		O que é o módulo datetime?
+		
+			- O módulo 'datetime' em Python é usado para lidar com datas e horas.
+			- Ele possui várias classes úteis como date, time e timedelta.
+			- Para ver mais exemplos acesse python.org
+			
+				Exemplo: 
+				
+					import datetime
+					
+					d = datetime.date(23, 7, 19)
+					print(d) 	# >>> 2023-07-19
+					
+		Manipulando datas com timedelta
+		
+			- O objeto Timedelta representa uma duração, a diferença entre duas datas ou horas.
+			- class datetime.timedelta(days=0, seconds=0, microseconds=0, millisecondes=0, minutes=0, hours=0, weeks=0)
+			- Todos os argumentos são opcionais e o padrão é 0.
+			- Os argumentos podem ser números inteiros ou pontos flutuantes, e podem ser positivos ou negativos.
+			- Apenas dias, segundos e microsegundos são armazenados internamente.
+			- Os argumentos são convertidos para essas unidades:
+			
+				- Um milisegundo é convertido em 1000 microsegundos
+				- Um minuto é convertido em 60 segundos
+				- Uma hora é convertida em 3600 segundos
+				- Uma semana é convertida em 7 dias.
+	
+				Exemplo:
+				
+					import datetime
+					
+					# Criando data e hora
+					d = datetime.datetime(2023, 7, 19, 13, 45)
+					print(d) # >>> 2023-07-19 13:45:00
+					
+					# Adicionando uma semana
+					d = d + datetime.timedelta(weeks=1)
+					print(d) # 2023-07-26 13:45:00
+					
+		Formatando e convertendo datas com strftime e strptime
+		
+			- O Python também permite converter e formatar datas e horas.
+			- Para isso, usamos os métodos 'strftime' (string format time) e 'strptime' (string parse time)
+			
+				Exemplo:
+				
+					import datetime
+					
+					d = datetime.datetime.now()
+					
+					# Formatando data e hora
+					print(d.strftime("%d/%m/%Y %H:#M")) #>>> 19/07/2023 14:20
+					
+					# Convertendo string para datetime
+					date_string = '20/07/2023 15:30"
+					d = datetime.datetime.strptime(date_string, ""%d/%m/%Y %H:#M")
+					print(d) 	#>>> 23-07-20 15:30:00
+					
+		Trabalhando com timezone
+		
+			- Quando trabalhamos com data e hora, lidar com fusos horários é um necessidade comum. 
+			- Python facilita isso através do módulo 'pytz'
+			
+				Exemplo:
+				
+					# pip install pytz
+					
+					import datetime
+					import pytz
+					
+					# Criando datetime com timezone
+					d = datetime.datetime.now(pytz.timezone("America/Sao_Paulo"))
+					print(d) 	#>>> 2024-07-19 14:25:00-03:00
+					
+			Trabalhando com 'tz' sem bibliotecas externas
+			
+				- O Python permite fazer isso com o módulo datetime padrão, embora seja um pouco mais complexo do que usando bibliotecas como 'pytz'.
+				
+				Exemplo:
+				
+					import datetime
+					
+					# Criando datetime com timezone
+					d = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3), "BRT"))
+					print(d)  #>>> 2023-07-19 14:25:00-03:00
+					
+					# Convertendo para outro timezone
+					d_utc = d.astimezone(datetime.timezone.utc)
+					print(d_utc) 	#>>> 2023-07-19 17:25:00+00:00
