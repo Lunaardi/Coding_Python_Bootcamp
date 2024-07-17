@@ -1,0 +1,269 @@
+Aula 3.0
+
+	Tipos de Operadores com Python
+
+		Operadores Aritméticos
+			- Os operadores aritméticos executam operações matemáticas, como adição, subtração com operandos.
+			
+				Exemplo 1: Adição, Subtração e Multiplicação.
+				
+					#Adição			#Subtração		#Multiplicação
+					print(1 + 1)	print(10 - 2)	print(4 * 3)
+					>>> 2			>>> 8			>>> 12
+						
+				Exemplo 2: Divisão e Divisão Inteira	
+				
+					#Divisão		#Divisão Inteira
+					print(12 / 3)	print(12 // 2)
+					>>> 4.0			>>> 6
+				
+				Exemplo 3: Módulo e Exponenciação
+				
+					#Modulo			#Exponenciação
+					print(10 % 3)	print(2 ** 3)
+					>>> 1			>>> 8
+				
+			Precedência de Operadores
+				- Na matemática existe uma regra que indica quais operações devem ser executadas primeiro.
+				- Isso é útil pois ao analisar uma expressão, a depender da ordem das operações o valor pode ser diferente:
+				
+					Exemplo:
+						x = 20 - 10 * 2
+						x é igual a 20 ou 0?
+						Na matematica comum essa expressão seria igual a zero.
+						
+				- A definição indica a seguinte ordem como a correta:
+					- Parêntesis
+					- Expoêntes
+					- Multiplicações e divisões (da esquerda para a direita)
+					- Somas e subtrações (da esquerda para a direita)
+					
+					Exemplos:
+						
+						print(10 - 5 * 2)
+						>>> 0
+						
+						print((10 - 5) * 2)
+						>>> 10
+						
+						print(10 ** 2 * 2)
+						>>> 200
+						
+						print(10 ** (2 * 2))
+						>>> 10000
+						
+						print(10 / 2 * 4)
+						>>> 20.0
+		
+		Operadores de Comparação
+			- São operadores utilizados para comparar dois valores distintos.
+			
+				Exemplo 1: Comparador de Igualdade
+					
+					saldo = 450
+					saque = 200
+					
+					print(saldo == saque)
+					>>> False
+				
+				Exemplo 2: Comparador de Diferença
+					
+					saldo = 450
+					saque = 200
+					
+					print(saldo != saque)
+					>>> True
+					
+				Exemplo 3: Maior que / Maior ou Igual
+					
+					saldo = 450
+					saque = 200
+					
+					print(saldo > saque)
+					>>> True
+					
+					Print(saldo >= saque)
+					>>> True
+				
+				Exemplo 4: Menor que / Menor ou Igual
+					
+					saldo = 450
+					saque = 200
+					
+					print(saldo < saque)
+					>>> False
+					
+					Print(saldo <= saque)
+					>>> False
+
+		Operadores de Atribuição
+		
+			- São operadores utilizados para definir o valor inicial ou sobrescrever o valor de uma variável.
+			
+				Exemplo 1: Atribuição Simples
+				
+					saldo = 500 
+					
+					print(saldo)
+					>>> 500
+					
+				Exemplo 2: Atribuição com Adição (operador '+=' significa adiciona á variavel)
+				
+					saldo = 500
+					saldo += 200
+					
+					print(saldo)
+					>>> 700
+					
+				Exemplo 3: Atribuição com Subtração (operador '-=' significa subtrair dá variavel)
+				
+					saldo = 500
+					saldo -= 100
+					
+					print(saldo)
+					>>> 400
+		
+				Exemplo 4: Atribuição com Multiplicação (operador '*=' significa multiplicar com á variavel)
+				
+					saldo = 500
+					saldo *= 2
+					
+					print(saldo)
+					>>> 1000
+					
+				Exemplo 5: Atribuição com Divisão e Divisão Inteira (operador '/=' ou '//=' significa multiplicar com á variavel)
+				
+					saldo = 500
+					saldo /= 5
+					
+					print(saldo)
+					>>> 100.0
+					
+					saldo = 500
+					saldo //= 5
+					
+					print(saldo)
+					>>> 100
+					
+				Exemplo 6: Atribuição com Módulo (operador '%=' significa calcular o módulo da variavel)
+				
+					saldo = 500
+					saldo %= 480
+					
+					print(saldo)
+					>>> 20
+					
+				Exemplo 7: Atribuição com Exponecial (operador '**=' significa calcular o exponencial da variavel)
+				
+					saldo = 80
+					saldo **= 2
+					
+					print(saldo)
+					>>> 6400
+					
+		Operadores Lógicos
+			
+			- São operadores utilizados em conjunto com o operadores de comparação, para montar uma expressão lógica.
+			- Quando um operador de comparação é utilizado, o reswultado retornado é um booleano, dessa forma podemos combinar operadores de comparação com os operadores lógicos, 
+				- Exemplo: op_comparacao + op_logico + ope_comparacao... N ...
+			
+				Operador E (and)
+					 
+					saldo = 100
+					saque = 200
+					limite = 100
+					
+					exp_1 = saldo >= saque and saque <= limite
+					print(exp_1)
+					>>> False
+					
+				Operador Ou (or)
+					 
+					saldo = 1000
+					saque = 200
+					limite = 100
+					
+					exp_2 = saldo >= saque and saque <= limite
+					print(exp_2)
+					>>> False
+					
+				Operador Negação
+				
+					contatos_emergencia = []
+					 
+					not 1000 > 1500
+					>>> True
+						- vemos nesse caso que 1000 não é maior que 1500 porém seria como ativar uma falsa resposta
+					
+					not contatos_emergencia
+					>>> True
+					
+					not "saque 1500;"
+					>>> False
+					
+					not ""
+					>>> true
+					
+				Parênteses
+					
+					saldo = 1000
+					saque = 250
+					limite = 200
+					conta_especial = True
+					
+					saldo >= saque and saque <= limite or conta_especial and saldo >= saque
+					>>> True
+					
+					(saldo >= saque and saque <= limite) or (conta_especial and saldo >= saque)
+					>>> true 
+					
+				Remodelando os exemplos acima para facilitar a interpretação da linguagen Python a outros programadores temos:
+					
+					saldo = 1000
+					saque = 250
+					limite = 200
+					conta_especial = True
+					
+					conta_normal_com_saldo_sufuciente = (saldo >= saque and saque <= limite)
+					conta_especial_com_saldo_suficiente = (conta_especial and saldo >= saque)
+					
+					exp_3 = conta_normal_com_saldo_sufuciente or conta_especial_com_saldo_suficiente
+					print(exp_3)
+		
+		Operadores de Identidade
+		
+			São operadores utilizados para comparar se os dois objetos testados ocupam a mesma posição na memória.
+			
+				Exemplos:
+					
+					curso = "Curso de Python"
+					nome_curso = curso
+					saldo, limite = 200, 200
+					
+					curso is nome_curso
+					>>> True
+					
+					curso is not nome_curso
+					>>> False
+					
+					saldo is limite
+					>>> True
+					
+		Operadores de Associação
+		
+			São operadores utilizados para verificar se um objeto está presente em uma sequência.
+			
+				Exemplos:
+				
+					curso = "Curso de Python"
+					frutas = ["laranja", "uva", "limão"]
+					saques = [1500, 100]
+					
+					"Python" is curso
+					>>> True
+					
+					"maçã" not in frutas
+					>>> True
+					
+					200 in saques
+					>>> False
